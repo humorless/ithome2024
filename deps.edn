@@ -5,6 +5,11 @@
   com.datomic/peer        {:mvn/version "1.0.7187"}}
 
  :aliases
- {:dev
+ {:cider
+  {:extra-deps {cider/cider-nrepl {:mvn/version "0.28.5"}}
+   :main-opts ["-m" "nrepl.cmdline" "--middleware"
+               "[cider.nrepl/cider-middleware]"
+               "--interactive"]}
+  :dev
   {:extra-paths ["dev"]
    :extra-deps  {}}}}
