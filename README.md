@@ -5,13 +5,15 @@
 1. [SDKMAN](https://sdkman.io/)
 2. [Clojure CLI](https://clojure.org/reference/clojure_cli)
 3. 編輯器整合環境
+   - neovim
+   - Conjure (neovim plugin)
 
 ### 解釋
 
 - SDKMAN 是用來讓你先安裝好 java。請安裝 java 11 以上的版本。
 - Clojure CLI 也是必要的，因為這邊的範例 Clojure 的程式碼。而 Clojure 跟一般的軟體開發有一個很大的不同。它需要 REPL-driven programming 的設置，所以需要設置編輯器整合。
 
-### 編輯器整合，以 neovim 為例
+### 編輯器整合: 在 neovim 上安裝 Conjure 
 
 -   在 mac 上安裝 neovim 
 ` brew install neovim `
@@ -121,24 +123,28 @@ autocmd BufWritePost *.cljs call Cljfmt()
 ## 簡易 Conjure 指令
 
 主要會使用到的 Conjure 指令：
-:ConjureEval [code]                類似 fireplace 的 cqp
-`<localleader> ee`   // evaluate the form under the cursor.  (e 是 inner 的諧音)
-`<localleader> er`    //  evaluate the root form under the cursor. (r 是 outer 的諧音)
-`<localleader> e!`     // evaluate the form under the cursor and replace it.  (! 意指 side effect)
 
-類似 fireplace     :Require 的功能，重新載入整個檔案。
-`<localleader> eb`   // evaluate the current buffer
-`<localleader> ef`   // evaluate the current file from disk
+- :ConjureEval [code]   // 輸入程式碼 (code)直接執行。
+- `<localleader> ee`   // evaluate the form under the cursor.  (e 是 inner 的諧音)
+- `<localleader> er`   //  evaluate the root form under the cursor. (r 是 outer 的諧音)
+- `<localleader> e!`   // evaluate the form under the cursor and replace it.  (! 意指 side effect)
+
+重新載入整個檔案。
+
+- `<localleader> eb`   // evaluate the current buffer
+- `<localleader> ef`   // evaluate the current file from disk
 
 快速檢查特定變數的『值』
-`<localleader> ew`  // evaluate the current word
+
+- `<localleader> ew`  // evaluate the current word
 
 開啟 log buffer  的指令
-`<localleader> ls`            // 水平開啟
-`<localleader> lv`           //  垂直開啟
-`<localleader> lq`           //   關閉
 
-看文章、切換到定義
-`K`              // 看 document
-`gd`            //  跳轉定義
+- `<localleader> ls`            // 水平開啟
+- `<localleader> lv`           //  垂直開啟
+- `<localleader> lq`           //   關閉
+
+看文件、切換到定義
+- `K`                // 看 document
+- `gd`               //  跳轉定義
 
