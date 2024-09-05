@@ -5,6 +5,7 @@
    [datomic.api :as d]))
 
 (def url "datomic:mem://ithome")
+(d/create-database url)
 
 (def conn (d/connect url))
 
