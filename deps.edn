@@ -1,0 +1,10 @@
+{:paths ["src" "resources"]
+
+ :deps
+ {org.clojure/clojure     {:mvn/version "1.11.4"}
+  com.datomic/peer        {:mvn/version "1.0.7187"}}
+
+ :aliases
+ {:dev
+  {:extra-paths ["dev"]
+   :extra-deps  {}}}}
