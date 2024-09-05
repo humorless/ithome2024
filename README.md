@@ -23,12 +23,12 @@
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 ```
--   修改 `~/.config/nvim/init.vim` 
+-   修改 `~/.config/nvim/init.vim` (複製、貼上即可)
 -   :source % 
 -   :PlugInstall
 
 
-
+;; 下面這一段，要複製貼上到 `~/.config/nvim/init.vim` 
 ```
 " Specify a directory for plugins.
 call plug#begin(stdpath('data') . '/plugged')
