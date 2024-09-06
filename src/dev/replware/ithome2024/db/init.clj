@@ -48,7 +48,7 @@
     :city/name "Leeds"
     :city/population 770800}])
 
-(defn go []
+(defn day-18-go []
   (d/transact db/conn schema)
   (d/transact db/conn data))
 
