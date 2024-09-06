@@ -5,7 +5,7 @@
 ;; bigdec | bigint | boolean | bytes | double | float | instant |
 ;; keyword | long | ref | string | symbol | tuple | uuid | uri
 
-(def schema
+(def thin-schema-example
   [[:user/uuid :uuid "Unique user identifier"]
    [:user/name :string "User name"]
    ;; End user entity
@@ -31,5 +31,5 @@
       (some #{:component} flags)
       (assoc :db/isComponent true))))
 
-(defn schema-tx []
-  (inflate-schema schema))
+(defn schema-tx [thin-schema]
+  (inflate-schema thin-schema))
