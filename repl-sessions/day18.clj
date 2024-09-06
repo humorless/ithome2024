@@ -8,7 +8,7 @@
 ;; init database
 (init/day-18-go)
 
-(d/q '[:find ?country (max 3 ?city) (max 3 ?population)
+(d/q '[:find ?country (max 2 ?population)
        :in $
        :where
        [?ct :country/name ?country]
@@ -18,39 +18,26 @@
 
 (comment
  ;; => 
-  [["France" ["Paris" "Marseille" "Lyon"] [2181000 808000 422000]]
-   ["United Kingdom"
-    ["London" "Leeds" "Birmingham"]
-    [7825300 1016800 770800]]
-   ["United States"
-    ["New York" "Los Angeles" "Chicago"]
-    [8175133 3792621 2695598]]])
+  [["France" [2181000 808000]]
+   ["United Kingdom" [7825300 1016800]]
+   ["United States" [8175133 3792621]]])
 
-(defn rank
+(defn max-by-population
   [coll]
-  (let [s (count coll)]
-    (range 1 (inc s))))
+  (let [result (sort-by second > coll)]
+    (take 2 result)))
 
-(d/q '[:find ?country (max 3 ?city) (max 3 ?population)
-       (repl-sessions.day18/rank ?city)
+(d/q '[:find ?country (repl-sessions.day18/max-by-population ?tup)
        :in $
        :where
        [?ct :country/name ?country]
        [?ct :city/name ?city]
-       [?ct :city/population ?population]]
+       [?ct :city/population ?population]
+       [(tuple ?city ?population) ?tup]]
      (db/db))
 
 (comment
   ;; => 
-  [["France"
-    ["Paris" "Marseille" "Lyon"]
-    [2181000 808000 422000]
-    (1 2 3)]
-   ["United Kingdom"
-    ["London" "Leeds" "Birmingham"]
-    [7825300 1016800 770800]
-    (1 2 3)]
-   ["United States"
-    ["New York" "Los Angeles" "Chicago"]
-    [8175133 3792621 2695598]
-    (1 2 3)]])
+  [["France" (["Paris" 2181000] ["Marseille" 808000])]
+   ["United Kingdom" (["London" 7825300] ["Birmingham" 1016800])]
+   ["United States" (["New York" 8175133] ["Los Angeles" 3792621])]])
