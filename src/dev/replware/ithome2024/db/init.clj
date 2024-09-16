@@ -135,3 +135,22 @@
   (let [schema (s/schema-tx day-19-schema)]
     (d/transact db/conn schema)
     (d/transact db/conn day-19-data)))
+
+(def day-29-schema
+  [[:person/name :string "A person's name"]
+   [:person/roles :keyword "A person's roles" :many]
+   ;; End post's entity
+   ])
+
+(def day-29-data
+  [{:db/id "temp-1"
+    :person/name "John"
+    :person/roles [:driver :student]}
+   {:db/id "temp-2"
+    :person/name "Mary"
+    :person/roles [:driver :teacher]}])
+
+(defn day-29-go []
+  (let [schema (s/schema-tx day-29-schema)]
+    (d/transact db/conn schema)
+    (d/transact db/conn day-29-data)))
